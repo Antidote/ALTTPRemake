@@ -1,0 +1,6 @@
+[submodule "libzelda"]
+	path = libzelda
+	url = https://github.com/Antidote/libzelda.git
+[submodule "Sakura"]
+	path = Sakura
+	url = https://github.com/Antidote/Sakura.git
