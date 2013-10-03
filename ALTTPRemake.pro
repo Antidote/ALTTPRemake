@@ -7,4 +7,5 @@ ALTTPRemake.depends += libzelda \
 SUBDIRS += \
     libzelda \
     Sakura\
-    ALTTPRemake
+    ALTTPRemake \
+    SakuraSprite

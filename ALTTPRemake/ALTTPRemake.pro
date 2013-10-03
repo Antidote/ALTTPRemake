@@ -56,5 +56,19 @@ INCLUDEPATH += \
                ../libzelda/include \
                ../Sakura/include
 
-SOURCES += main.cpp
+SOURCES += src/main.cpp \
+    src/ALTTPEngine.cpp \
+    src/Link.cpp \
+    src/ALTTPGameState.cpp \
+    src/SplashState.cpp \
+    src/SFMLSplash.cpp \
+    src/SakuraSplash.cpp
+
+HEADERS += \
+    include/ALTTPEngine.hpp \
+    include/Link.hpp \
+    include/ALTTPGameState.hpp \
+    include/SplashState.hpp \
+    include/SFMLSplash.hpp \
+    include/SakuraSplash.hpp
 
