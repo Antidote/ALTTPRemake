@@ -13,13 +13,12 @@ void ALTTPEngine::initialize(int argc, char *argv[])
     m_title = config().settingLiteral("sys_title", "A Link to the Past Remake " + ALTTPEngine::gameVersion());
     window().setTitle(m_title);
     console().print(Console::Info, "Initializing gamestates");
-    // Sakura Splash
+/*    // Sakura Splash
     SakuraSplash* sakuraSplash = new SakuraSplash();
     addState(sakuraSplash);
-    setCurrentState(sakuraSplash->name());
     // SFML Splash
     SFMLSplash* sfmlSplash = new SFMLSplash();
-    addState(sfmlSplash);
+    addState(sfmlSplash);*/
 
     // ALTTP Game state
     ALTTPGameState* gameState = new ALTTPGameState();

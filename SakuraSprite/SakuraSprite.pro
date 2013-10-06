@@ -22,17 +22,23 @@ CONFIG(debug, debug|release){
     LIBS += -lzelda-d
 }
 
+LIBS += -lsfml-graphics \
+        -lsfml-window \
+        -lsfml-system
+
 INCLUDEPATH += \
     ../libzelda/include \
     include
 
 SOURCES += main.cpp \
     SSpriteFrame.cpp \
-    SSPritePart.cpp \
-    SSpriteFile.cpp
+    SSpriteFile.cpp \
+    SSprite.cpp \
+    SSpritePart.cpp
 
 HEADERS += \
     SSpriteFrame.hpp \
-    SSPritePart.hpp \
-    SSpriteFile.hpp
+    SSpriteFile.hpp \
+    SSprite.hpp \
+    SSpritePart.hpp
 

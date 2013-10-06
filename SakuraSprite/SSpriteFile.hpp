@@ -1,15 +1,18 @@
-#ifndef SSPRITEFILE_HPP
-#define SSPRITEFILE_HPP
+﻿#ifndef SSpRITEFILE_HPP
+#define SSpRITEFILE_HPP
 
-#include <list>
+#include <vector>
+#include <unordered_map>
 #include <string>
-
+#include <SFML/System/Vector2.hpp>
+#include <Types.hpp>
 struct STexture
 {
     std::string Filepath;
     bool        Preload;
 };
 
+class SSprite;
 class SSpriteFile
 {
 public:
@@ -25,36 +28,64 @@ public:
      * \param originX
      * \param originY
      */
-    SSpriteFile(int width, int height, float originX, float originY);
+    SSpriteFile(Uint32 width, Uint32 height, float originX, float originY);
 
     /*!
-     * \brief setWidth
-     * \param width
+     * \brief SSpriteFile
+     * \param size
+     * \param origin
      */
-    void setWidth(int width);
+    SSpriteFile(const sf::Vector2u& size, const sf::Vector2f origin);
+
+    /*!
+     * \brief setSize
+     * \param width
+     * \param height
+     */
+    void setSize(Uint32 width, Uint32 height);
+
+    /*!
+     * \brief setSize
+     * \param size
+     */
+    void setSize(const sf::Vector2u& size);
+
+    /*!
+     * \brief size
+     * \return
+     */
+    sf::Vector2u size() const;
+
     /*!
      * \brief width
      * \return
      */
-    int width() const;
-
-    /*!
-     * \brief setHeight
-     * \param height
-     */
-    void setHeight(int height);
+    Uint32 width() const;
 
     /*!
      * \brief height
      * \return
      */
-    int height() const;
+    Uint32 height() const;
 
     /*!
-     * \brief setOriginX
-     * \param originX
+     * \brief setOrigin
+     * \param x
+     * \param y
      */
-    void setOriginX(float originX);
+    void setOrigin(const float x, const float y);
+
+    /*!
+     * \brief setOrigin
+     * \param origin
+     */
+    void setOrigin(const sf::Vector2f& origin);
+
+    /*!
+     * \brief origin
+     * \return
+     */
+    sf::Vector2f origin() const;
 
     /*!
      * \brief originX
@@ -63,25 +94,36 @@ public:
     float originX() const;
 
     /*!
-     * \brief setOriginY
-     * \param originY
-     */
-    void setOriginY(float originY);
-
-    /*!
      * \brief originY
      * \return
      */
     float originY() const;
-    
-    
-private:
-    std::list<STexture*> m_textures;
-    int                  m_width;
-    int                  m_height;
-    float                m_originX;
-    float                m_originY;
 
+    /*!
+     * \brief addTexture
+     * \param texture
+     */
+    void addTexture(STexture* texture);
+
+    /*!
+     * \brief removeTexture
+     * \param id
+     */
+    void removeTexture(int id);
+
+    /*!
+     * \brief texture
+     * \param id
+     * \return
+     */
+    STexture* texture(Uint32 id);
+
+    void addSprite(SSprite* sprite);
+private:
+    std::vector<STexture*> m_textures;
+    sf::Vector2u         m_size;
+    sf::Vector2f         m_origin;
+    std::unordered_map<std::string, SSprite*> m_sprites;
 };
 
-#endif // SSPRITE_HPP
+#endif // SSpRITE_HPP

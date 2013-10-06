@@ -11,6 +11,8 @@ public:
 
     void onDeath();
     void onDamage(Entity *e);
+    void collide(Entity *entity);
+    sf::IntRect collisionRect() const;
 };
 
 #endif // LINK_HPP

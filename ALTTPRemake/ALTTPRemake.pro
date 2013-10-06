@@ -72,3 +72,24 @@ HEADERS += \
     include/SFMLSplash.hpp \
     include/SakuraSplash.hpp
 
+OTHER_FILES += \
+    data/console/bg2.png \
+    data/console/bg1.png \
+    data/fonts/debug.ttf \
+    data/fonts/cour.ttf \
+    data/fonts/arial.ttf \
+    data/fonts/RetGanon.ttf \
+    data/maps/EasternPalace.zmap \
+    data/music/hyrule_castle.ogg \
+    data/sounds/LTTP_Rupee1.wav \
+    data/sounds/LTTP_Pause_Open.wav \
+    data/sounds/LTTP_Pause_Close.wav \
+    data/sounds/LTTP_Link_Hurt.wav \
+    data/sounds/LTTP_Item.wav \
+    data/splash/Wiiking.png \
+    data/splash/SakuraLogo.png \
+    data/splash/SFML.png \
+    data/splash/NintendoLogo.png \
+    data/sprites/Link/link_green.png \
+    data/sprites/Link/Link.sprs
+
