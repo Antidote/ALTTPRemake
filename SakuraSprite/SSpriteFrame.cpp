@@ -5,19 +5,21 @@ SSpriteFrame::SSpriteFrame()
 {
 }
 
-SSpriteFrame::SSpriteFrame(float offX, float offY, float texX, float texY, Uint32 width, Uint32 height, bool flippedH, bool flippedV)
+SSpriteFrame::SSpriteFrame(float offX, float offY, float texX, float texY, Uint32 width, Uint32 height, float frameTime, bool flippedH, bool flippedV)
     : m_offset(sf::Vector2f(offX, offY)),
       m_textureOffset(sf::Vector2f(texX, texY)),
       m_size(sf::Vector2u(width, height)),
+      m_frameTime(sf::seconds(frameTime)),
       m_flippedH(flippedH),
       m_flippedV(flippedV)
 {
 }
 
-SSpriteFrame::SSpriteFrame(const sf::Vector2f& frameOff, const sf::Vector2f& texOff, const sf::Vector2u& size, bool flippedH, bool flippedV)
+SSpriteFrame::SSpriteFrame(const sf::Vector2f& frameOff, const sf::Vector2f& texOff, const sf::Vector2u& size, float frameTime, bool flippedH, bool flippedV)
     : m_offset(frameOff),
       m_textureOffset(texOff),
       m_size(size),
+      m_frameTime(sf::seconds(frameTime)),
       m_flippedH(flippedH),
       m_flippedV(flippedV)
 {
@@ -86,4 +88,14 @@ void SSpriteFrame::setFlippedVertically(const bool val)
 bool SSpriteFrame::flippedVertically() const
 {
     return m_flippedV;
+}
+
+void SSpriteFrame::setFrameTime(float frameTime)
+{
+    m_frameTime = sf::seconds(frameTime);
+}
+
+float SSpriteFrame::frameTime() const
+{
+    return m_frameTime.asSeconds();
 }

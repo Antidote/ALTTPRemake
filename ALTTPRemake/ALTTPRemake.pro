@@ -62,7 +62,8 @@ SOURCES += src/main.cpp \
     src/ALTTPGameState.cpp \
     src/SplashState.cpp \
     src/SFMLSplash.cpp \
-    src/SakuraSplash.cpp
+    src/SakuraSplash.cpp \
+    src/Button.cpp
 
 HEADERS += \
     include/ALTTPEngine.hpp \
@@ -70,7 +71,8 @@ HEADERS += \
     include/ALTTPGameState.hpp \
     include/SplashState.hpp \
     include/SFMLSplash.hpp \
-    include/SakuraSplash.hpp
+    include/SakuraSplash.hpp \
+    include/Button.hpp
 
 OTHER_FILES += \
     data/console/bg2.png \
@@ -91,5 +93,6 @@ OTHER_FILES += \
     data/splash/SFML.png \
     data/splash/NintendoLogo.png \
     data/sprites/Link/link_green.png \
-    data/sprites/Link/Link.sprs
+    data/sprites/Link/Link.sprs \
+    data/gui/testButton.png
 

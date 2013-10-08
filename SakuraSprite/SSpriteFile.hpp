@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
-#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics.hpp>
 #include <Types.hpp>
 struct STexture
 {
@@ -16,6 +16,36 @@ class SSprite;
 class SSpriteFile
 {
 public:
+    /*!
+     * \brief Major
+     */
+    static const Uint32 Major;
+
+    /*!
+     * \brief Minor
+     */
+    static const Uint32 Minor;
+
+    /*!
+     * \brief Revision
+     */
+    static const Uint32 Revision;
+
+    /*!
+     * \brief Patch
+     */
+    static const Uint32 Build;
+
+    /*!
+     * \brief Version
+     */
+    static const Uint32 Version;
+
+    /*!
+     * \brief Magic
+     */
+    static const Uint32 Magic;
+
     /*!
      * \brief SSprite
      */
@@ -118,9 +148,28 @@ public:
      */
     STexture* texture(Uint32 id);
 
+    std::vector<STexture*> textures() const;
+    Uint32 textureCount() const;
+    /*!
+     * \brief setTextures
+     * \param textures
+     */
+    void setTextures(std::vector<STexture*> textures);
+
     void addSprite(SSprite* sprite);
+
+    void setSprites(std::unordered_map<std::string, SSprite*> sprites);
+
+    SSprite* sprite(const std::string& name);
+
+    std::unordered_map<std::string, SSprite*> sprites() const;
+    Uint32 spriteCount() const;
+
+    sf::Texture& sfTexture(Uint32 id) const;
+
 private:
     std::vector<STexture*> m_textures;
+    std::vector<sf::Texture> m_sfTextures;
     sf::Vector2u         m_size;
     sf::Vector2f         m_origin;
     std::unordered_map<std::string, SSprite*> m_sprites;

@@ -1,13 +1,29 @@
 #include "SSpritePart.hpp"
+#include "SSpriteFrame.hpp"
+#include "SSprite.hpp"
 
-SSpritePart::SSpritePart()
+SSpritePart::SSpritePart(SSprite* root)
+    : m_root(root),
+      m_hasCollision(false),
+      m_currentFrame(NULL),
+      m_frameIndex(0),
+      m_currentTime(sf::seconds(0))
 {
 }
 
-SSpritePart::SSpritePart(const std::string& name, bool hasCollision)
-    : m_name(name),
-      m_hasCollision(hasCollision)
+SSpritePart::SSpritePart(SSprite* root, const std::string& name, bool hasCollision)
+    : m_root(root),
+      m_name(name),
+      m_hasCollision(hasCollision),
+      m_currentFrame(NULL),
+      m_frameIndex(0),
+      m_currentTime(sf::seconds(0))
 {
+}
+
+SSpritePart::~SSpritePart()
+{
+
 }
 
 void SSpritePart::setName(const std::string& name)
@@ -41,4 +57,86 @@ SSpriteFrame* SSpritePart::frame(int id)
         return NULL;
 
     return m_frames[id];
+}
+
+void SSpritePart::setFrames(std::vector<SSpriteFrame*> frames)
+{
+    if (frames.size() == 0)
+        return;
+
+    if (m_frames.size() > 0)
+    {
+        for (SSpriteFrame* frame : m_frames)
+        {
+            delete frame;
+            frame = NULL;
+        }
+        m_frames.clear();
+    }
+
+    if (!m_currentFrame)
+    {
+        m_currentFrame = frames[0];
+        updateTexture();
+    }
+
+    m_frames = frames;
+}
+
+std::vector<SSpriteFrame*> SSpritePart::frames() const
+{
+    return m_frames;
+}
+
+Uint32 SSpritePart::frameCount() const
+{
+    return m_frames.size();
+}
+
+void SSpritePart::update(const sf::Time& dt)
+{
+    if (!m_root)
+        return;
+
+    m_currentTime += dt;
+    m_partSprite.setPosition(m_root->position() + m_currentFrame->offset());
+    if (m_currentFrame && m_currentTime.asSeconds() > m_currentFrame->frameTime())
+    {
+        m_currentTime = sf::seconds(0);
+        m_frameIndex++;
+        if (m_frameIndex >= frameCount())
+            m_frameIndex = 0;
+
+        m_currentFrame = frame(m_frameIndex);
+        updateTexture();
+    }
+}
+
+void SSpritePart::draw(sf::RenderTarget& rt)
+{
+    if (!m_root)
+        return;
+
+    rt.draw(m_partSprite);
+}
+
+void SSpritePart::updateTexture()
+{
+    float scaleX = 1.f;
+    float scaleY = 1.f;
+    sf::Vector2f origin(0, 0);
+    if (m_currentFrame->flippedHorizontally())
+    {
+        origin.x = m_currentFrame->size().x;
+        scaleX = -scaleX;
+    }
+    if (m_currentFrame->flippedVertically())
+    {
+        origin.y = m_currentFrame->size().y;
+        scaleY = -scaleY;
+    }
+    m_partSprite.setScale(scaleX, scaleY);
+    m_partSprite.setOrigin(origin);
+    m_partSprite.setTexture(m_root->sfTexture());
+    m_partSprite.setTextureRect(sf::IntRect((sf::Vector2i)m_currentFrame->textureOffset(), (sf::Vector2i)m_currentFrame->size()));
 }

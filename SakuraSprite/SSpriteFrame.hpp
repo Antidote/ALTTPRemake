@@ -18,26 +18,28 @@ public:
 
     /*!
      * \brief SSpriteFrame
-     * \param width
-     * \param height
-     * \param texX
-     * \param texY
      * \param offX
      * \param offY
+     * \param texX
+     * \param texY
+     * \param width
+     * \param height
+     * \param frameTime
      * \param flippedH
      * \param flippedV
      */
-    SSpriteFrame(float offX, float offY, float texX, float texY, Uint32 width, Uint32 height, bool flippedH = false, bool flippedV = false);
+    SSpriteFrame(float offX, float offY, float texX, float texY, Uint32 width, Uint32 height, float frameTime, bool flippedH = false, bool flippedV = false);
 
     /*!
      * \brief SSpriteFrame
-     * \param size
-     * \param texOff
      * \param frameOff
+     * \param texOff
+     * \param size
+     * \param frameTime
      * \param flippedH
      * \param flippedV
      */
-    SSpriteFrame(const sf::Vector2f& frameOff, const sf::Vector2f& texOff, const sf::Vector2u& size, bool flippedH = false, bool flippedV = false);
+    SSpriteFrame(const sf::Vector2f& frameOff, const sf::Vector2f& texOff, const sf::Vector2u& size, float frameTime, bool flippedH = false, bool flippedV = false);
 
     /*!
      * \brief setOffset
@@ -120,13 +122,25 @@ public:
      */
     bool flippedVertically() const;
 
+    /*!
+     * \brief setFrameTime
+     * \param frameTime
+     */
+    void setFrameTime(float frameTime);
+
+    /*!
+     * \brief frameTime
+     * \return
+     */
+    float frameTime() const;
+
 private:
     sf::Vector2f m_offset;
     sf::Vector2f m_textureOffset;
     sf::Vector2u m_size;
+    sf::Time     m_frameTime;
     bool         m_flippedH;
     bool         m_flippedV;
-    sf::Time     m_frameTime;
 };
 
 #endif // SSpRITEFRAME_HPP

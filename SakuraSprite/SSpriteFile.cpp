@@ -1,6 +1,15 @@
 #include "SSpriteFile.hpp"
 #include "SSprite.hpp"
 
+const Uint32 SSpriteFile::Major = 0;
+const Uint32 SSpriteFile::Minor = 0;
+const Uint32 SSpriteFile::Revision = 1;
+const Uint32 SSpriteFile::Build = 0;
+const Uint32 SSpriteFile::Version = Major | (Major << 8) | (Revision << 16) | (Build << 24);
+
+const Uint32 SSpriteFile::Magic = 'S' | ('P' << 8) | ('R' << 16) | ('S' << 24);
+
+
 SSpriteFile::SSpriteFile()
     : m_size(sf::Vector2u(1, 1))
 {
@@ -31,6 +40,16 @@ void SSpriteFile::setSize(const sf::Vector2u& size)
 sf::Vector2u SSpriteFile::size() const
 {
     return m_size;
+}
+
+Uint32 SSpriteFile::width() const
+{
+    return m_size.x;
+}
+
+Uint32 SSpriteFile::height() const
+{
+    return m_size.y;
 }
 
 void SSpriteFile::setOrigin(const float x, const float y)
@@ -77,11 +96,87 @@ STexture* SSpriteFile::texture(Uint32 id)
     return m_textures[id];
 }
 
+std::vector<STexture*> SSpriteFile::textures() const
+{
+    return m_textures;
+}
+
+Uint32 SSpriteFile::textureCount() const
+{
+    return m_textures.size();
+}
+
 void SSpriteFile::addSprite(SSprite* sprite)
 {
     if (m_sprites.find(sprite->name()) != m_sprites.end())
         return;
 
     m_sprites[sprite->name()] = sprite;
+}
+
+void SSpriteFile::setSprites(std::unordered_map<std::string, SSprite*> sprites)
+{
+    if (sprites.size() == 0)
+        return;
+    if (m_sprites.size() > 0)
+    {
+        for (std::pair<std::string, SSprite*> sprite : m_sprites)
+        {
+            delete sprite.second;
+            sprite.second = NULL;
+        }
+        m_sprites.clear();
+    }
+
+    m_sprites = sprites;
+}
+
+SSprite* SSpriteFile::sprite(const std::string& name)
+{
+    if (m_sprites.find(name) == m_sprites.end())
+        return NULL;
+
+    return m_sprites[name];
+}
+
+std::unordered_map<std::string, SSprite*> SSpriteFile::sprites() const
+{
+    return m_sprites;
+}
+
+Uint32 SSpriteFile::spriteCount() const
+{
+    return m_sprites.size();
+}
+
+sf::Texture& SSpriteFile::sfTexture(Uint32 id) const
+{
+    return *((sf::Texture*)&m_sfTextures[id]);
+}
+
+void SSpriteFile::setTextures(std::vector<STexture*> textures)
+{
+    if (textures.size() == 0)
+        return;
+
+    if (m_textures.size() > 0)
+    {
+        for(STexture* tex : m_textures)
+        {
+            delete tex;
+            tex = NULL;
+        }
+        m_textures.clear();
+    }
+
+    m_sfTextures.clear();
+    for (STexture* tex : textures)
+    {
+        sf::Texture sfTex;
+        sfTex.loadFromFile(tex->Filepath);
+        m_sfTextures.push_back(sfTex);
+    }
+
+    m_textures = textures;
 }
 

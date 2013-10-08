@@ -5,7 +5,7 @@ CONFIG -= qt
 
 LIBS += -L../libzelda/lib
 
-QMAKE_CXXFLAGS += -std=c++0x
+QMAKE_CXXFLAGS += -std=c++0x -Os
 
 
 CONFIG(release, release|debug){
@@ -24,7 +24,8 @@ CONFIG(debug, debug|release){
 
 LIBS += -lsfml-graphics \
         -lsfml-window \
-        -lsfml-system
+        -lsfml-system \
+        -lGL
 
 INCLUDEPATH += \
     ../libzelda/include \
@@ -34,11 +35,17 @@ SOURCES += main.cpp \
     SSpriteFrame.cpp \
     SSpriteFile.cpp \
     SSprite.cpp \
-    SSpritePart.cpp
+    SSpritePart.cpp \
+    SSpriteFileWriter.cpp \
+    SSpriteFileReader.cpp \
+    Entity.cpp
 
 HEADERS += \
     SSpriteFrame.hpp \
     SSpriteFile.hpp \
     SSprite.hpp \
-    SSpritePart.hpp
+    SSpritePart.hpp \
+    SSpriteFileWriter.hpp \
+    SSpriteFileReader.hpp \
+    Entity.hpp
 
