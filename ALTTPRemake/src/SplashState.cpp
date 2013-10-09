@@ -1,5 +1,5 @@
 #include "SplashState.hpp"
-#include <Engine.hpp>
+#include <Sakura/Core/Engine.hpp>
 
 SplashState::SplashState()
     : m_isInitialized(false),
@@ -34,7 +34,7 @@ bool SplashState::isInitialized() const
     return m_isInitialized;
 }
 
-RunState::Type SplashState::type() const
+Sakura::Core::RunState::Type SplashState::type() const
 {
     return Splash;
 }
@@ -49,7 +49,7 @@ std::string SplashState::name() const
     return m_name;
 }
 
-RunState* SplashState::nextState() const
+Sakura::Core::RunState* SplashState::nextState() const
 {
     return NULL;
 }

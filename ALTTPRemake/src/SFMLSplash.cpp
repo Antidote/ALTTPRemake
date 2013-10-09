@@ -1,7 +1,7 @@
 #include "SFMLSplash.hpp"
-#include <Engine.hpp>
-#include <ResourceManager.hpp>
-#include <TextureResource.hpp>
+#include <Sakura/Core/Engine.hpp>
+#include <Sakura/Core/ResourceManager.hpp>
+#include <Sakura/Resources/TextureResource.hpp>
 
 SFMLSplash::SFMLSplash()
     : m_splashTime(sf::seconds(5.f)),
@@ -44,7 +44,7 @@ void SFMLSplash::draw(sf::RenderTarget& rt)
     rt.draw(m_sfmlLogo);
 }
 
-RunState* SFMLSplash::nextState() const
+Sakura::Core::RunState* SFMLSplash::nextState() const
 {
     return sEngineRef().state("game");
 }

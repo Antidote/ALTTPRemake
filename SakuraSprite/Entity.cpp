@@ -7,6 +7,8 @@
 #include "SSprite.hpp"
 #include "SSpritePart.hpp"
 #include "SSpriteFrame.hpp"
+#include <lua.hpp>
+#include <LuaBridge/LuaBridge.h>
 
 Entity::Entity(const std::string& name, Type type)
     : m_name(name),

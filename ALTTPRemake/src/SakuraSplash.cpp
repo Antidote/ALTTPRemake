@@ -1,7 +1,7 @@
 #include "SakuraSplash.hpp"
-#include <Engine.hpp>
-#include <ResourceManager.hpp>
-#include <TextureResource.hpp>
+#include <Sakura/Core/Engine.hpp>
+#include <Sakura/Core/ResourceManager.hpp>
+#include <Sakura/Resources/TextureResource.hpp>
 
 
 SakuraSplash::SakuraSplash()
@@ -53,7 +53,7 @@ void SakuraSplash::draw(sf::RenderTarget& rt)
     rt.draw(m_fader);
 }
 
-RunState* SakuraSplash::nextState() const
+Sakura::Core::RunState* SakuraSplash::nextState() const
 {
     return sEngineRef().state("SFMLSplash");
 }

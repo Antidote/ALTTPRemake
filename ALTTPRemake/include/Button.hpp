@@ -1,11 +1,11 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 
-#include <Widget.hpp>
-class Button : public Widget
+#include <Sakura/Gui/Widget.hpp>
+class Button : public Sakura::Gui::Widget
 {
 public:
-    Button(Container* owner, const std::string& name, bool visible = true, bool enabled = true);
+    Button(Sakura::Gui::Container* owner, const std::string& name, bool visible = true, bool enabled = true);
 
     void setPosition(const float x, const float y);
     void setPosition(const sf::Vector2f &position);

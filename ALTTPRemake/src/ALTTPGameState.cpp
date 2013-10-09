@@ -1,12 +1,12 @@
 #include "ALTTPGameState.hpp"
 #include "Link.hpp"
-#include <Engine.hpp>
-#include <EntityManager.hpp>
-#include <Camera.hpp>
-#include <Container.hpp>
-#include <Label.hpp>
-#include <Keys.hpp>
-#include <Button.hpp>
+#include <Sakura/Core/Engine.hpp>
+#include <Sakura/Core/EntityManager.hpp>
+#include <Sakura/Core/Keys.hpp>
+#include <Sakura/Core/Camera.hpp>
+#include <Sakura/Gui/Container.hpp>
+#include <Sakura/Gui/Label.hpp>
+#include "Button.hpp"
 
 #include <iostream>
 
@@ -19,13 +19,13 @@ void ALTTPGameState::initialize()
 
     int windowW = sEngineRef().config().settingInt("vid_width", 640);
     int windowH = sEngineRef().config().settingInt("vid_height", 480);
-    m_container = new Container(0, 0, windowW, windowH);
+    m_container = new Sakura::Gui::Container(0, 0, windowW, windowH);
     int startY = 16;
 
     // New Game
-    m_newGameLabel = new Label(m_container, "newGameLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "New Game");
+    m_newGameLabel = new Sakura::Gui::Label(m_container, "newGameLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "New Game");
     m_container->addWidget(m_newGameLabel);
-    m_newGameLabel->setAlignment(Label::Center);
+    m_newGameLabel->setAlignment(Sakura::Gui::Label::Center);
     m_newGameLabel->setPosition(0, startY);
     m_newGameLabel->mouseEnter()   ->Connect(this, &ALTTPGameState::onMouseEnter);
     m_newGameLabel->mouseLeave()   ->Connect(this, &ALTTPGameState::onMouseLeave);
@@ -37,9 +37,9 @@ void ALTTPGameState::initialize()
 
 
     // Load game
-    m_loadGameLabel = new Label(m_container, "loadGameLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "Load Game");
+    m_loadGameLabel = new Sakura::Gui::Label(m_container, "loadGameLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "Load Game");
     m_container->addWidget(m_loadGameLabel);
-    m_loadGameLabel->setAlignment(Label::Center);
+    m_loadGameLabel->setAlignment(Sakura::Gui::Label::Center);
     m_loadGameLabel->setPosition(0, startY);
     m_loadGameLabel->mouseEnter()->Connect(this, &ALTTPGameState::onMouseEnter);
     m_loadGameLabel->mouseLeave()->Connect(this, &ALTTPGameState::onMouseLeave);
@@ -51,9 +51,9 @@ void ALTTPGameState::initialize()
     std::cout << startY << std::endl;
 
     // Quit game
-    m_quitLabel = new Label(m_container, "quitLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "Quit");
+    m_quitLabel = new Sakura::Gui::Label(m_container, "quitLabel", *sEngineRef().resourceManager().font("fonts/debug.ttf"), "Quit");
     m_container->addWidget(m_quitLabel);
-    m_quitLabel->setAlignment(Label::Center);
+    m_quitLabel->setAlignment(Sakura::Gui::Label::Center);
     m_quitLabel->setPosition(0, startY);
     m_quitLabel->keyPress()->Connect(this, &ALTTPGameState::onKeyPress);
     m_quitLabel->keyRelease()->Connect(this, &ALTTPGameState::onKeyRelease);
@@ -100,45 +100,45 @@ void ALTTPGameState::update(sf::Time dt)
     GameState::update(dt);
 }
 
-void ALTTPGameState::onKeyPress(Widget* w, sf::Event::KeyEvent keyEvent)
+void ALTTPGameState::onKeyPress(Sakura::Gui::Widget* w, sf::Event::KeyEvent keyEvent)
 {
-    sEngineRef().console().print(Console::Message, "Key %s pressed on %s", KeyInfo[keyEvent.code].name.c_str(), w->name().c_str());
+    sEngineRef().console().print(Sakura::Core::Console::Message, "Key %s pressed on %s", KeyInfo[keyEvent.code].name.c_str(), w->name().c_str());
 }
 
-void ALTTPGameState::onKeyRelease(Widget* w, sf::Event::KeyEvent keyEvent)
+void ALTTPGameState::onKeyRelease(Sakura::Gui::Widget* w, sf::Event::KeyEvent keyEvent)
 {
-    sEngineRef().console().print(Console::Message, "Key %s released on %s", KeyInfo[keyEvent.code].name.c_str(), w->name().c_str());
+    sEngineRef().console().print(Sakura::Core::Console::Message, "Key %s released on %s", KeyInfo[keyEvent.code].name.c_str(), w->name().c_str());
 
     if (w == m_quitLabel && keyEvent.code == sf::Keyboard::Return)
         sEngineRef().quit();
 }
 
-void ALTTPGameState::onMouseEnter(Widget* w)
+void ALTTPGameState::onMouseEnter(Sakura::Gui::Widget* w)
 {
     w->setColor(sf::Color::Red);
 }
 
-void ALTTPGameState::onMouseLeave(Widget* w)
+void ALTTPGameState::onMouseLeave(Sakura::Gui::Widget* w)
 {
     w->setColor(sf::Color::White);
 }
 
-void ALTTPGameState::onMousePressed(Widget* w, sf::Event::MouseButtonEvent buttonEvent)
+void ALTTPGameState::onMousePressed(Sakura::Gui::Widget* w, sf::Event::MouseButtonEvent buttonEvent)
 {
 }
 
-void ALTTPGameState::onMouseReleased(Widget* w, sf::Event::MouseButtonEvent buttonEvent)
+void ALTTPGameState::onMouseReleased(Sakura::Gui::Widget* w, sf::Event::MouseButtonEvent buttonEvent)
 {
     if (buttonEvent.button == sf::Mouse::Left && w == m_quitLabel)
         sEngineRef().quit();
 }
 
-void ALTTPGameState::onActivated(Widget* w)
+void ALTTPGameState::onActivated(Sakura::Gui::Widget* w)
 {
     w->setColor(sf::Color::Red);
 }
 
-void ALTTPGameState::onDeactivated(Widget* w)
+void ALTTPGameState::onDeactivated(Sakura::Gui::Widget* w)
 {
     w->setColor(sf::Color::White);
 }

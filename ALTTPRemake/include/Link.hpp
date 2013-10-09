@@ -1,10 +1,10 @@
 #ifndef LINK_HPP
 #define LINK_HPP
 
-#include <Player.hpp>
+#include <Sakura/Core/Player.hpp>
 
 
-class Link : public Player
+class Link : public Sakura::Core::Player
 {
 public:
     Link();

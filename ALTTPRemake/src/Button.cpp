@@ -1,8 +1,8 @@
-#include "include/Button.hpp"
-#include <Engine.hpp>
+#include "Button.hpp"
+#include <Sakura/Core/Engine.hpp>
 
-Button::Button(Container* owner, const std::string& name, bool visible, bool enabled)
-    : Widget(owner, name, visible, enabled)
+Button::Button(Sakura::Gui::Container* owner, const std::string& name, bool visible, bool enabled)
+    : Sakura::Gui::Widget(owner, name, visible, enabled)
 {
     m_texture = &sEngineRef().resourceManager().texture("gui/testButton.png");
     m_text.setFont(*sEngineRef().resourceManager().font("fonts/debug.ttf"));

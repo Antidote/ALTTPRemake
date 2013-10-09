@@ -1,8 +1,8 @@
 #ifndef SPLASHSTATE_HPP
 #define SPLASHSTATE_HPP
-#include <RunState.hpp>
+#include <Sakura/Core/RunState.hpp>
 
-class SplashState : public RunState
+class SplashState : public Sakura::Core::RunState
 {
 public:
     SplashState();

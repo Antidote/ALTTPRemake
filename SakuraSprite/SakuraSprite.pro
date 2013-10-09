@@ -25,7 +25,8 @@ CONFIG(debug, debug|release){
 LIBS += -lsfml-graphics \
         -lsfml-window \
         -lsfml-system \
-        -lGL
+        -lGL \
+        -llua
 
 INCLUDEPATH += \
     ../libzelda/include \

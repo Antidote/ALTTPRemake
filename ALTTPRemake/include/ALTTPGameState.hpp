@@ -1,14 +1,20 @@
 #ifndef ALTTPGAMESTATE_HPP
 #define ALTTPGAMESTATE_HPP
 
-#include <GameState.hpp>
+#include <Sakura/Core/GameState.hpp>
 
+namespace Sakura
+{
+namespace Gui
+{
 class Container;
 class Label;
 class Widget;
+}
+}
 class Button;
 
-class ALTTPGameState : public GameState
+class ALTTPGameState : public Sakura::Core::GameState
 {
 public:
     void initialize();
@@ -17,18 +23,18 @@ public:
 private:
     sf::Time m_currentTime;
     sf::Time m_clipTime;
-    void onKeyPress(Widget*, sf::Event::KeyEvent);
-    void onKeyRelease(Widget*, sf::Event::KeyEvent);
-    void onMouseEnter(Widget*);
-    void onMouseLeave(Widget*);
-    void onMousePressed(Widget*, sf::Event::MouseButtonEvent);
-    void onMouseReleased(Widget*, sf::Event::MouseButtonEvent);
-    void onActivated(Widget*);
-    void onDeactivated(Widget*);
-    Container* m_container;
-    Label*    m_newGameLabel;
-    Label*    m_loadGameLabel;
-    Label*    m_quitLabel;
+    void onKeyPress(Sakura::Gui::Widget*, sf::Event::KeyEvent);
+    void onKeyRelease(Sakura::Gui::Widget*, sf::Event::KeyEvent);
+    void onMouseEnter(Sakura::Gui::Widget*);
+    void onMouseLeave(Sakura::Gui::Widget*);
+    void onMousePressed(Sakura::Gui::Widget*, sf::Event::MouseButtonEvent);
+    void onMouseReleased(Sakura::Gui::Widget*, sf::Event::MouseButtonEvent);
+    void onActivated(Sakura::Gui::Widget*);
+    void onDeactivated(Sakura::Gui::Widget*);
+    Sakura::Gui::Container* m_container;
+    Sakura::Gui::Label*    m_newGameLabel;
+    Sakura::Gui::Label*    m_loadGameLabel;
+    Sakura::Gui::Label*    m_quitLabel;
     Button*   m_button;
 };
 
