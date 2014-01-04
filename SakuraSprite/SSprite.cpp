@@ -61,7 +61,8 @@ void SSprite::addStateId(int id)
     if (m_stateIds.size() >= 65536)
         return;
 
-    m_stateIds.push_back(id);
+    if (std::find(m_stateIds.begin(), m_stateIds.end(), id) == m_stateIds.end())
+        m_stateIds.push_back(id);
 }
 
 int SSprite::stateId(int index) const
@@ -92,7 +93,6 @@ void SSprite::addPart(SSpritePart* part)
         if (tmp == part)
             return;
     }
-
     m_parts.push_back(part);
 }
 

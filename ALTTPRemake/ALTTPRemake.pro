@@ -48,7 +48,8 @@ LIBS += -lsfml-graphics \
         -lsfml-network \
         -lsfml-system \
         -lphysfs \
-        -lz
+        -lz \
+        -ltinyxml
 
 
 INCLUDEPATH += \
@@ -63,7 +64,9 @@ SOURCES += src/main.cpp \
     src/SplashState.cpp \
     src/SFMLSplash.cpp \
     src/SakuraSplash.cpp \
-    src/Button.cpp
+    src/Button.cpp \
+    src/MenuState.cpp \
+    src/MainMenu.cpp
 
 HEADERS += \
     include/ALTTPEngine.hpp \
@@ -72,7 +75,9 @@ HEADERS += \
     include/SplashState.hpp \
     include/SFMLSplash.hpp \
     include/SakuraSplash.hpp \
-    include/Button.hpp
+    include/Button.hpp \
+    include/MenuState.hpp \
+    include/MainMenu.hpp
 
 OTHER_FILES += \
     data/console/bg2.png \
@@ -94,5 +99,6 @@ OTHER_FILES += \
     data/splash/NintendoLogo.png \
     data/sprites/Link/link_green.png \
     data/sprites/Link/Link.sprs \
-    data/gui/testButton.png
+    data/gui/testButton.png \
+    data/gui/hud_life.png
 

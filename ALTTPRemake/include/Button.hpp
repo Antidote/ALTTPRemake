@@ -12,7 +12,6 @@ public:
     void update(sf::Time dt);
     void draw(sf::RenderTarget &rt);
 
-
 private:
     void setSize(const float w, const float h);
     void setSize(const sf::Vector2f& size);

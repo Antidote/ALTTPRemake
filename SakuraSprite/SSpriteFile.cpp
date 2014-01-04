@@ -1,5 +1,6 @@
 #include "SSpriteFile.hpp"
 #include "SSprite.hpp"
+#include <iostream>
 
 const Uint32 SSpriteFile::Major = 0;
 const Uint32 SSpriteFile::Minor = 0;
@@ -84,8 +85,13 @@ void SSpriteFile::addTexture(STexture* texture)
 
 void SSpriteFile::removeTexture(int id)
 {
-    ((void)id);
-    // TODO: Implement;
+    if (id > m_textures.size() || id < 0)
+        return;
+
+    STexture* tex = m_textures[id];
+    m_textures.erase(m_textures.begin() + id);
+    delete tex;
+    m_sfTextures.erase(m_sfTextures.begin() + id);
 }
 
 STexture* SSpriteFile::texture(Uint32 id)

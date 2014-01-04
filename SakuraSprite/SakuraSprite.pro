@@ -39,7 +39,8 @@ SOURCES += main.cpp \
     SSpritePart.cpp \
     SSpriteFileWriter.cpp \
     SSpriteFileReader.cpp \
-    Entity.cpp
+    Entity.cpp \
+    RoundedRectangleShape.cpp
 
 HEADERS += \
     SSpriteFrame.hpp \
@@ -48,5 +49,6 @@ HEADERS += \
     SSpritePart.hpp \
     SSpriteFileWriter.hpp \
     SSpriteFileReader.hpp \
-    Entity.hpp
+    Entity.hpp \
+    RoundedRectangleShape.hpp
 

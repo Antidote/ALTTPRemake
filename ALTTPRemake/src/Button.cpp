@@ -18,7 +18,7 @@ void Button::setPosition(const float x, const float y)
 
 void Button::setPosition(const sf::Vector2f& position)
 {
-    m_position = position;
+    Sakura::Gui::Widget::setPosition(position);
     updateButton();
 }
 

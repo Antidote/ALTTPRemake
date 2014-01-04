@@ -3,7 +3,7 @@ CONFIG += ordered
 
 SUBDIRS += \
     libzelda \
-    Sakura\
+    Sakura \
     ALTTPRemake \
     SakuraSprite
 

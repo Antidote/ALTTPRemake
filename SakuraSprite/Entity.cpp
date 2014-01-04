@@ -7,8 +7,6 @@
 #include "SSprite.hpp"
 #include "SSpritePart.hpp"
 #include "SSpriteFrame.hpp"
-#include <lua.hpp>
-#include <LuaBridge/LuaBridge.h>
 
 Entity::Entity(const std::string& name, Type type)
     : m_name(name),
@@ -22,6 +20,7 @@ Entity::Entity(const std::string& name, Type type)
     {
         SSpriteFileReader reader("sprites/Link/Link.sprs");
         m_spriteContainer = reader.readFile();
+        m_spriteContainer->removeTexture(0);
         m_currentSprite = m_spriteContainer->sprite("Link_North_Walk");
     }
     catch(...)

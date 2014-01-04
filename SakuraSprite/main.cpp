@@ -9,6 +9,7 @@
 #include <sstream>
 #include "Entity.hpp"
 #include <GL/gl.h>
+#include "RoundedRectangleShape.hpp"
 
 int main()
 {
@@ -17,6 +18,13 @@ int main()
     sf::Clock sysClock;
     sf::Time currentTime;
     sf::Time lastTime;
+    sf::RectangleShape testRect(sf::Vector2f(32, 32));
+    testRect.move(100, 100);
+    RoundedRectangleShape rectShape(sf::Vector2f(100, 5), 10, 5);
+//    rectShape.setOutlineColor(sf::Color::Blue);
+    rectShape.setOutlineThickness(2.f);
+    rectShape.move(50, 100);
+    //rectShape.scale(5.f, 5.f);
     float fps = 0;
 
     sf::Font font;
@@ -49,13 +57,14 @@ int main()
 
         window.clear();
         window.setView(view);
+//        glDisable(GL_TEXTURE_2D);
+//        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         entity.draw(window);
-        glDisable(GL_TEXTURE_2D);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        entity.draw(window);
-        glEnable(GL_TEXTURE_2D);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        //window.draw(testRect);
 
+        window.draw(rectShape);
+//        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+//        glEnable(GL_TEXTURE_2D);
         window.setView(window.getDefaultView());
         window.draw(fpsText);
         window.display();
