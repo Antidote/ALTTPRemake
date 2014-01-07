@@ -97,8 +97,16 @@ OTHER_FILES += \
     data/splash/SakuraLogo.png \
     data/splash/SFML.png \
     data/splash/NintendoLogo.png \
-    data/sprites/Link/link_green.png \
     data/sprites/Link/Link.sprs \
     data/gui/testButton.png \
-    data/gui/hud_life.png
+    data/gui/hud_life.png \
+    data/sprites/Link/blue.png \
+    data/sprites/Link/green.png \
+    data/sprites/Link/red.png \
+    data/music/rem_Dark_World.ogg \
+    data/music/rem_Hyrule_Castle.ogg \
+    data/music/rem_Intro.ogg \
+    data/music/rem_Title.ogg \
+    data/sounds/con_close.wav \
+    data/sounds/con_open.wav
 

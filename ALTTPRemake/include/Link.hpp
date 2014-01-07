@@ -3,7 +3,6 @@
 
 #include <Sakura/Core/Player.hpp>
 
-
 class Link : public Sakura::Core::Player
 {
 public:

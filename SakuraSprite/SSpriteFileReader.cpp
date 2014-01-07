@@ -143,4 +143,3 @@ SSpriteFile* SSpriteFileReader::readFile()
 
     return ret;
 }
-

@@ -23,7 +23,7 @@ bool ALTTPEngine::initialize(int argc, char *argv[])
         // ALTTP Game state
         ALTTPGameState* gameState = new ALTTPGameState();
         addState(gameState);
-//        setCurrentState("game");
+        setCurrentState("game");
         console().print(Sakura::Core::Console::Info, "A Link to the Past Remake " + gameVersion() + " Initialized");
         return true;
     }

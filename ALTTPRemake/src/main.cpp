@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     }
     catch(...)
     {
-        sEngineRef().console().print(Console::Fatal, "An unhandled exception has occurred");
+        sEngineRef().console().print(Sakura::Core::Console::Fatal, "An unhandled exception has occurred");
         sEngineRef().setFullscreen(false);
         return 1;
     }
