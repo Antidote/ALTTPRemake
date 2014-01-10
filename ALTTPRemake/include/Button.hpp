@@ -19,7 +19,7 @@ private:
     void corners();
     void borders();
     sf::VertexArray m_vertices;
-    sf::Texture*     m_texture;
+    sf::Texture     m_texture;
     sf::Text        m_text;
 };
 

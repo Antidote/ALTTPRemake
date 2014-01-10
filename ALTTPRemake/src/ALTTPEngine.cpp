@@ -4,13 +4,14 @@
 #include <ALTTPGameState.hpp>
 #include <MainMenu.hpp>
 
-ALTTPEngine::ALTTPEngine()
+ALTTPEngine::ALTTPEngine(int argc, char *argv[])
+    : Engine(argc, argv)
 {
 }
 
-bool ALTTPEngine::initialize(int argc, char *argv[])
+bool ALTTPEngine::initialize()
 {
-    if (Engine::initialize(argc, argv))
+    if (Engine::initialize())
     {
         console().print(Sakura::Core::Console::Info, "Initializing gamestates");
         // Sakura Splash
@@ -23,7 +24,7 @@ bool ALTTPEngine::initialize(int argc, char *argv[])
         // ALTTP Game state
         ALTTPGameState* gameState = new ALTTPGameState();
         addState(gameState);
-        setCurrentState("game");
+        setCurrentState("mainmenu");
         console().print(Sakura::Core::Console::Info, "A Link to the Past Remake " + gameVersion() + " Initialized");
         return true;
     }

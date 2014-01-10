@@ -9,12 +9,13 @@ void ALTTPGameState::initialize()
     m_clipTime = sf::seconds(.5f);
     GameState::initialize();
     Link* link = new Link();
+    link->setPosition(100, 100);
+    sEngineRef().setClearColor(sf::Color(72, 160, 72));
     sEngineRef().entityManager().addEntity(link);
     sEngineRef().camera().setLockedOn(link);
-    sEngineRef().camera().setSize(256, 224);
     sEngineRef().console().print(Sakura::Core::Console::Message, "Width: %f", sEngineRef().camera().size().x);
     sEngineRef().console().print(Sakura::Core::Console::Message, "Height: %f", sEngineRef().camera().size().y);
-    m_hudTest.setTexture(sEngineRef().resourceManager().texture("gui/hud_life1.png"));
+    m_hudTest.setTexture(sEngineRef().resourceManager().texture("gui/hud_life.png"));
 }
 
 void ALTTPGameState::update(sf::Time dt)

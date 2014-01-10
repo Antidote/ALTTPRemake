@@ -4,7 +4,7 @@
 Button::Button(Sakura::Gui::Container* owner, const std::string& name, bool visible, bool enabled)
     : Sakura::Gui::Widget(owner, name, visible, enabled)
 {
-    m_texture = &sEngineRef().resourceManager().texture("gui/testButton.png");
+    m_texture = sEngineRef().resourceManager().texture("gui/testButton.png");
     m_text.setFont(*sEngineRef().resourceManager().font("fonts/debug.ttf"));
     m_text.setString("Test");
     m_text.setCharacterSize(16);
@@ -51,7 +51,7 @@ void Button::update(sf::Time dt)
 
 void Button::draw(sf::RenderTarget& rt)
 {
-    rt.draw(m_vertices, m_texture);
+    rt.draw(m_vertices, &m_texture);
     rt.draw(m_text);
     Widget::draw(rt);
 }

@@ -11,13 +11,13 @@ int main(int argc, char* argv[])
     XInitThreads();
 #endif
     std::ios_base::sync_with_stdio(false);
-    ALTTPEngine engine;
+    ALTTPEngine engine(argc, argv);
 
 #ifndef DEBUG
     try
     {
 #endif
-        engine.initialize(argc, argv);
+        engine.initialize();
         return engine.run();
 #ifndef DEBUG
     }

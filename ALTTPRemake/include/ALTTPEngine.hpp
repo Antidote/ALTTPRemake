@@ -5,8 +5,8 @@
 class ALTTPEngine : public Sakura::Core::Engine
 {
 public:
-    ALTTPEngine();
-    bool initialize(int argc, char *argv[]);
+    ALTTPEngine(int argc, char *argv[]);
+    bool initialize();
     void onEvent(const sf::Event &event);
 
     void beforeUpdate();

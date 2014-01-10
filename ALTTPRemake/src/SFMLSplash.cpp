@@ -46,5 +46,5 @@ void SFMLSplash::draw(sf::RenderTarget& rt)
 
 Sakura::Core::RunState* SFMLSplash::nextState() const
 {
-    return sEngineRef().state("game");
+    return sEngineRef().state("mainmenu");
 }
