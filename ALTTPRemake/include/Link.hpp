@@ -33,6 +33,8 @@ public:
     sf::IntRect collisionRect() const;
 
 private:
+    void registerBindings();
+
     Sakura::Core::SSpriteFile* m_linkSprites;
     Sakura::Core::SSprite*     m_currentSprite;
     sf::Texture                m_currentTexture;

@@ -3,6 +3,7 @@
 #include <SFMLSplash.hpp>
 #include <ALTTPGameState.hpp>
 #include <MainMenu.hpp>
+#include <Sakura/Core/CVar.hpp>
 
 ALTTPEngine::ALTTPEngine(int argc, char *argv[])
     : Engine(argc, argv)
@@ -24,7 +25,7 @@ bool ALTTPEngine::initialize()
         // ALTTP Game state
         ALTTPGameState* gameState = new ALTTPGameState();
         addState(gameState);
-        setCurrentState("mainmenu");
+        setCurrentState("game");
         console().print(Sakura::Core::Console::Info, "A Link to the Past Remake " + gameVersion() + " Initialized");
         return true;
     }
