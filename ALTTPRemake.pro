@@ -4,8 +4,7 @@ CONFIG += ordered
 SUBDIRS += \
     libzelda \
     Sakura \
-    ALTTPRemake \
-    SakuraSprite
+    ALTTPRemake
 
 Sakura.depends += libzelda
 ALTTPRemake.depends += libzelda \
