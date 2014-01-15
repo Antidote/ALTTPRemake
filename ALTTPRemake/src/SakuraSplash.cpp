@@ -1,8 +1,17 @@
-#include "SakuraSplash.hpp"
+﻿#include "SakuraSplash.hpp"
 #include <Sakura/Core/Engine.hpp>
+#include <Sakura/Core/CVar.hpp>
 #include <Sakura/Core/ResourceManager.hpp>
 #include <Sakura/Resources/TextureResource.hpp>
 
+namespace Sakura
+{
+namespace Core
+{
+extern CVar* com_windowWidth;
+extern CVar* com_windowHeight;
+}
+}
 
 SakuraSplash::SakuraSplash()
     : m_splashTime(sf::seconds(5.f)),
@@ -28,10 +37,12 @@ void SakuraSplash::initialize()
 
 void SakuraSplash::update(sf::Time dt)
 {
+    Sakura::Core::CVar* vidWidth = Sakura::Core::com_windowWidth;
+    Sakura::Core::CVar* vidHeight = Sakura::Core::com_windowWidth;
     m_currentTime += dt;
     m_sakuraLogo.setOrigin(m_sakuraLogo.getTextureRect().width/2, m_sakuraLogo.getTextureRect().height/2);
-    m_sakuraLogo.setPosition(sEngineRef().config().settingInt("vid_width", 640)/2, sEngineRef().config().settingInt("vid_height", 480)/2);
-    m_fader.setSize(sf::Vector2f(sEngineRef().config().settingInt("vid_width", 640), sEngineRef().config().settingInt("vid_height", 640)));
+    m_sakuraLogo.setPosition(vidWidth->toInteger()/2, vidHeight->toInteger()/2);
+    m_fader.setSize(sf::Vector2f(vidWidth->toInteger(), vidHeight->toInteger()));
 
     if (m_currentTime > m_splashTime)
     {

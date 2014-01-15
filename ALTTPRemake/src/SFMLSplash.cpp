@@ -1,7 +1,17 @@
-#include "SFMLSplash.hpp"
+﻿#include "SFMLSplash.hpp"
 #include <Sakura/Core/Engine.hpp>
+#include <Sakura/Core/CVar.hpp>
 #include <Sakura/Core/ResourceManager.hpp>
 #include <Sakura/Resources/TextureResource.hpp>
+
+namespace Sakura
+{
+namespace Core
+{
+extern CVar* com_windowWidth;
+extern CVar* com_windowHeight;
+}
+}
 
 SFMLSplash::SFMLSplash()
     : m_splashTime(sf::seconds(5.f)),
@@ -22,9 +32,12 @@ void SFMLSplash::initialize()
 
 void SFMLSplash::update(sf::Time dt)
 {
+    Sakura::Core::CVar* vidWidth = Sakura::Core::com_windowWidth;
+    Sakura::Core::CVar* vidHeight = Sakura::Core::com_windowWidth;
+
     m_currentTime += dt;
     m_sfmlLogo.setOrigin(m_sfmlLogo.getTextureRect().width/2, m_sfmlLogo.getTextureRect().height);
-    m_sfmlLogo.setPosition(sEngineRef().config().settingInt("vid_width", 640)/2, sEngineRef().config().settingInt("vid_height", 480)/2);
+    m_sfmlLogo.setPosition(vidWidth->toInteger()/2, vidHeight->toInteger()/2);
 
     if (m_currentTime > m_splashTime)
         m_isDone = true;
