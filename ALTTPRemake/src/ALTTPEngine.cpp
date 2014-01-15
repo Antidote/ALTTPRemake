@@ -1,4 +1,4 @@
-#include <ALTTPEngine.hpp>
+﻿#include <ALTTPEngine.hpp>
 #include <SakuraSplash.hpp>
 #include <SFMLSplash.hpp>
 #include <ALTTPGameState.hpp>
