@@ -76,16 +76,11 @@ void Link::registerBindings()
         Sakura::Core::CVar::Binding defaultBinding;
         defaultBinding.Key = sf::Keyboard::Left;
         imp_playerLeft     = new Sakura::Core::CVar("playerleft", defaultBinding, "Moves the player left", (Sakura::Core::CVar::Game | Sakura::Core::CVar::Archive));
-        sEngineRef().cvarManager().registerCVar(imp_playerLeft);
         defaultBinding.Key = sf::Keyboard::Right;
         imp_playerRight    = new Sakura::Core::CVar("playerright", defaultBinding, "Moves the player right", (Sakura::Core::CVar::Game | Sakura::Core::CVar::Archive));
-        sEngineRef().cvarManager().registerCVar(imp_playerRight);
         defaultBinding.Key = sf::Keyboard::Up;
         imp_playerUp       = new Sakura::Core::CVar("playerup", defaultBinding, "Moves the player up", (Sakura::Core::CVar::Game | Sakura::Core::CVar::Archive));
-        sEngineRef().cvarManager().registerCVar(imp_playerUp);
         defaultBinding.Key = sf::Keyboard::Down;
         imp_playerDown     = new Sakura::Core::CVar("playerdown", defaultBinding, "Moves the player down", (Sakura::Core::CVar::Game | Sakura::Core::CVar::Archive));
-        sEngineRef().cvarManager().registerCVar(imp_playerDown);
-
     }
 }

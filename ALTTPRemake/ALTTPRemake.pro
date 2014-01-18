@@ -2,6 +2,7 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
+DESTDIR = ./
 
 
 LIBS += -L../libzelda/lib \
@@ -32,6 +33,7 @@ win32:LIBS += \
     -L../Sakura/extlibs/AL/lib \
     -L../Sakura/extlibs/physfs/lib \
     -L../Sakura/extlibs/AL/lib \
+    -L../Sakura/extlibs/tinyxml/lib \
     -lopenal32 \
     -lopengl32
 
@@ -56,6 +58,13 @@ INCLUDEPATH += \
                include \
                ../libzelda/include \
                ../Sakura/include
+
+win32:INCLUDEPATH += \
+    ../Sakura/extlibs/physfs/include \
+    ../Sakura/extlibs/SFML/include \
+    ../Sakura/extlibs/AL/include \
+    ../Sakura/extlibs/GLEW/include \
+    ../Sakura/extlibs/tinyxml/include
 
 SOURCES += src/main.cpp \
     src/ALTTPEngine.cpp \
